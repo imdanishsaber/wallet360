@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+
+<head>
+	<title>Mallet360</title>
+	<link href="./images/logo.png" rel="icon" type="image/png" sizes="100x100">
+	<link rel="stylesheet" type="text/css" href="Wallet360.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+</head>
+
+<body id="body">
+	<div id="fullBody">
+		<div id="securityAlert">
+			<div style="margin-top: 15px;">
+				<center>Under Development, Only Use On Testnet.</center>
+			</div>
+		</div>
+	</div>
+	<div id="header_div">
+		<div id="header">
+			<div style="float:left; height:75px; width:450px; margin-top:5px;">
+				<div style="width: 70px; display: inline-table;"> <a id="logo" href="Wallet360.html"><img id="logo-img"
+							src="./images/logo.png"></a></div>
+				<a id="title" href="Wallet360.html">Wallet<span id="title1">360</span></a>
+			</div>
+			<div style="float: left; width:36%; height: 80px;">
+				<a id="tabs" onclick="containerFront()" style="width: 100px;">Home
+				</a>
+				<a id="tabs" onclick="containerCreate()" style="">Create Wallet
+				</a>
+				<a id="tabs" onclick="containerOpen()" style="">Open Wallet
+				</a>
+				<a id="tabs" onclick="popUp()" style="width: 100px;">Contract
+				</a>
+			</div>
+			<div style="float: left; width:auto; height: 60px; margin-top: 10px; margin-left: 30px; ">
+				Gas Price<br>
+				<input id="gasPrice" autocomplete="false" class="slider" type="range" min="1" max="80"
+					onchange="txFeeCalculator(this)" value="30">
+				<div id="gasPriceValue"
+					style="color: orange; margin-top: 7px; text-align: center; font-size: 20px; font-weight: bolder; letter-spacing: 1px;">
+					30 Gwei</div>
+			</div>
+			<select class="designButton" id="mySelect" style="font-size: 16px;" onchange="networkSelection('mySelect')">
+				<option disabled>Network</option>
+				<option value="https://rinkeby.infura.io/uhyGfBKKeV2k11JDkoQM">ETH (MyEtherWallet)</option>
+				<option value="https://rinkeby.infura.io/uhyGfBKKeV2k11JDkoQM">ETH (Etherscan.io)</option>
+				<option value="https://rinkeby.infura.io/uhyGfBKKeV2k11JDkoQM">ETH (infura.io)</option>
+				<option value="https://rinkeby.infura.io/uhyGfBKKeV2k11JDkoQM">ETH (Giveth.io)</option>
+				<option value="https://rinkeby.infura.io/uhyGfBKKeV2k11JDkoQM">ETC (Epool.io)</option>
+				<option selected value="https://rinkeby.infura.io/uhyGfBKKeV2k11JDkoQM">Rinkeby (infura.io)</option>
+				<option value="https://rinkeby.infura.io/uhyGfBKKeV2k11JDkoQM">Rinkeby (Etherscan.io)</option>
+				<option value="https://rinkeby.infura.io/uhyGfBKKeV2k11JDkoQM">Kovan (Etherscan.io)</option>
+				<option value="https://rinkeby.infura.io/uhyGfBKKeV2k11JDkoQM">Ropsten (infura.io)</option>
+				<option value="https://rinkeby.infura.io/uhyGfBKKeV2k11JDkoQM">Ropsten (MyEtherWallet)</option>
+
+			</select>
+		</div>
+	</div>
+	<div id="mainBody" style="  margin-top:160px;margin-bottom: 50px; color: white;">
+		<div id="containerFront" style="display:block;margin-left:350px; text-align:center; margin-right: 350px;">
+			<a onclick="containerCreate()" class="walletButton" id="createWalletButton">
+				Create Wallet
+			</a>
+			<a onclick="containerOpen()" class="walletButton" id="openFileButton">
+				Open Wallet
+			</a>
+		</div>
+		<div id="containerCreate" style="display: none;margin-left: 350px; text-align: center; margin-right: 350px;">
+			<a onclick="createWithKeythereum()" class="walletButton" id="createWalletButton">
+				Create Wallet
+			</a>
+			<a onclick="createWithHDWallet()" class="walletButton" id="openFileButton">
+				Create HD-Wallet
+			</a>
+		</div>
+		<div id="containerOpen"
+			style="display: none; margin-top: 150px; margin-left: 350px; text-align: center; margin-right: 350px;">
+			<a onclick="openWithKeythereum()" class="walletButton" id="createWalletButton" style="padding-top: 30px;">
+				Open with Json
+			</a>
+			<a onclick="openWithHDWallet()" class="walletButton" id="openFileButton" style="padding-top: 30px;">
+				Open with Password
+			</a>
+		</div>
+
+		<div id="createWithKeythereum"
+			style=" display: none; margin-top: 50px; margin-left: 350px; text-align: center; margin-right: 350px;">
+
+			<div
+				style="position: relative; margin-bottom: 20px; font-size: 40px; font-weight: bold; border-bottom: 1px solid orange;font-style:monospace;border-radius: 15px;">
+				Creat New Wallet
+			</div>
+			<div style="margin-top: 40px; font-weight: bolder;">
+				<h2>Enter Password</h2><br>
+				<input type="password" autocomplete="false" name="password" id="passToCreate"
+					style="width:75%;height: 40px;" onkeypress="enterToCreate(event)"
+					placeholder="Sholud be of minimun 5 characters, along with Digits!">
+				<br><br><br>
+
+				<button class="designButton" id="submit1" style="width: 150px; height: 40px; font-size: 20px;"
+					onclick=" loading()">Create Wallet
+				</button><br><br>
+				<div id="noteP">
+					<p style="font-size:20px; font-weight: bolder; letter-spacing: 1px;"><span
+							style="font-size: 25px; letter-spacing: 2px; color: red;">Note :</span>&#160 This password
+						will be used to encrypt your public/private keys.</p>
+				</div>
+			</div>
+			<div style="margin-left: 350px;">
+				<img id="loading" src="/home/danish/wallet/images/loading1.png"
+					style="margin-top: -70px; display: none; width: 200px; height: 60px;">
+			</div>
+			<button class="designButton" id="jsonDownloadButton"
+				style="display: none; width: 340px; height: 40px; font-size: 20px;margin-top: -30px; margin-left: 280px;"><a
+					id="jsonDownload" href="#">Download Keystore File</a>
+			</button><br>
+
+			<div id="precautions" style="text-align: center;display: none; font-weight: bolder; ">
+				<p>Do not lose it! It cannot be recovered if you lose it.</p>
+				<p>Do not share it! Your funds will be stolen if you use this file on a malicious/phishing site.</p>
+				<p>Make a backup! Secure it like the millions of dollars it may one day be worth.</p>
+			</div>
+
+			<button id="doneButton" class="designButtonGreen"
+				style="display: none; width: 170px; height: 40px; font-size: 20px; margin-left: 370px;margin-top: 20px;"><a
+					id="doneButtonText" href="#" style="display: block;" onclick="openWithKeythereum()">I Understand</a>
+			</button><br>
+		</div>
+
+		<div id="createWithHDWallet"
+			style=" display: none; margin-top: 50px; margin-left: 350px; text-align: center; margin-right: 350px;">
+			<div
+				style="margin-bottom: 60px; font-size: 40px; font-weight: bold; border-bottom: 1px solid orange;font-style:monospace;">
+				Creat New HD-Wallet</div>
+			<div id="hideIt">
+				<div style="position: relative; font-weight: bolder;">
+					<button class="designButton" class="randomMnemonicButton" onclick=" generateMnemonic() "
+						style="width: 350px; height: 40px; font-size: 20px; margin-left: 30px;">Generate Random
+						Mnemonic</button><br><br>
+					<div id="randomMnemonicBar"
+						style="margin-left: 20px;border-radius: 10px; padding-top: 10px; padding-left:10px; padding-right:10px; width:95%;height:40px;  sans-serif;font-size: 18px; line-height:1.42857143; text-align: center; background-color: white; color: black">
+					</div><br><br>
+				</div>
+				<div id="precautionsText" style="display: none; text-align: center; font-weight: bolder; ">
+					<p>Do not lose it! It can'not be recovered if you lose it.</p>
+					<p>Save it Because it is the only way to recover your Wallet Back.</p>
+					<p>Make a backup! Secure it like the millions of dollars it may one day be worth.</p>
+					<button id="doneButton" class="designButtonGreen"
+						style="width: 390px; height: 47px; margin-top: 20px;font-size: 20px; "><a id="doneButtonText"
+							href="#" onclick="passForEncryption()">I Understand</a></button><br>
+				</div>
+			</div>
+			<div id="showIt" style="display: none; margin-top: -20px; font-size: 25px; font-weight: bolder;">
+				Password<span style="font-size:15px;color:pink;position:relative;top:-1px;">&#160(Optional)</span><br>
+				<input type="password" name="password" autocomplete="false" id="passToGenerateSeed"
+					style="margin-top: 10px; width:75%;height:40px;" onkeypress="enterToCreateHDWallet(event)"
+					placeholder="Sholud be of minimun 5 characters, along with Digits!"><br><br>
+				<button class="designButton" onclick=" createHDWallet()"
+					style="width: 200px;height: 40px; font-size: 20px;">Create Wallet</button><br><br><br>
+			</div>
+		</div>
+
+		<div id="openWithKeythereum"
+			style="display:none; margin-top: 50px; margin-left: 350px; text-align: center; margin-right: 350px;">
+			<div
+				style="position: relative;  margin-bottom: 20px; font-size: 40px; font-weight: bold;border-bottom: 1px solid orange; border-radius: 15px;">
+				Open Wallet</div><br><br>
+			<p style="position: relative; font-weight: bolder;font-size: 20px;">Select your UTC/JSON file :</p>
+
+			<label for="file-upload" class="designButton"
+				style="padding-top: 8px; padding-bottom: 8px; padding-left:5px; padding-right: 5px; width: 200px;height: 40px;">
+				Custom Upload
+			</label>
+			<input id="file-upload" type="file" onchange="loadFile(event)" /><br><br>
+			<div id="fileName" style="font-size: 20px; color: orange;"></div><br>
+			<p style="font-weight: bolder;font-size: 15px;">Enter your respective UTC/JSON file Password :</p>
+			<input type="password" autocomplete="false" name="password" id="passToOpen" style="width:68%;height:40px;"
+				onkeypress="enterToOpen(event)" placeholder="Password">
+
+			<div id="alertJson" style="display:none; color:red; font-size:20px; font-weight:bolder; margin-top:20px; ">
+			</div><br>
+
+			<button class="designButton" style=" height: 39px;  margin-top: 20px; font-size: 18px;"
+				onclick="openWallet()">Access</button>
+			<div id="pk"></div>
+		</div>
+
+		<div id="openWithHDWallet"
+			style="display:none; margin-top: 50px; margin-left: 350px; text-align: center; margin-right: 350px;">
+			<div
+				style="position: relative;  margin-bottom: 20px; font-size: 40px; font-weight: bold; border-bottom: 1px solid orange; border-radius: 15px;">
+				Open HD-Wallet</div><br><br>
+
+			<p style="position: relative; font-weight: bolder;font-size: 20px;">Enter Your Mnemonic Here</p>
+
+			<input type="text" name="enteredMnemonic" autocomplete="false" id="enteredMnemonic"
+				style="position: relative;left: 20px; padding-left:10px; padding-right:10px; width:95%;height:40px; border-radius:5px; font-size: 18px; font-weight: bolder; line-height:1.42857143; background-color: white; color: black"
+				placeholder="Enter Your Tweleve(12) Words Mnemonic To Open HD-Wallet"><br><br>
+
+			<p style="font-weight: bolder;font-size: 20px;">Enter Password<span
+					style="font-size: 15px; color: pink; position: relative;top: -1px;">&#160(Optional)</span></p>
+
+			<input type="password" autocomplete="false" name="passToOpenHDWallet" id="passToOpenHDWallet"
+				style="width:68%;height:40px;" onkeypress="enterToOpenHDWallet(event)"
+				placeholder="Enter Your Password to Open HD-Wallet">
+
+			<div id="alertMne" style="display:none; color:red; font-size:20px; font-weight:bolder; margin-top:20px; ">
+				Please Enter Mnemonic First!</div><br>
+
+			<button class="designButton" style="width: 180px; height: 39px;  margin-top: 30px; font-size: 20px;"
+				onclick="openHDWallet()">Open Wallet</button>
+		</div>
+
+		<div id="containerInfo" style="display:none;margin-left: 100px;margin-right: 100px;">
+
+			<div id="wallet_info" style="display: inline-table; width: 690px;">
+
+				<h1 id="heading"
+					style="text-align: center; font-weight: bolder; font-size: 35px; border-bottom: 1px solid orange;border-radius: 15px; ">
+					Wallet Information</h1><br><br>
+				<h2
+					style="display: inline;padding-left: 15px;padding-right: 15px; border-bottom: 1px solid orange;border-radius: 15px;">
+					Account Balance</h2><br><br>
+				<div id="balance"
+					style="display: inline-table; font-size: 22px;width:420px; height:60px; margin-left:35px; background-color: #2b3e50;color:white; font-weight:bold;letter-spacing: 1.2px;">
+					5.55</div>
+				<button id="refresh" class="designButton"
+					style="display: inline-table;text-align: center; width:100px; height:30px;font-size: 18px;"
+					onclick="balanceRefresh()">Refresh</button><br>
+				<h2
+					style="display: inline;padding-left: 15px;padding-right: 15px; border-bottom: 1px solid orange;border-radius: 15px;">
+					Public Address</h2><br><br>
+				<div id="myAddress"
+					style="font-size:22px; width:600px; height:60px;margin-left:35px; background-color: #2b3e50;color:white;font-weight:bold;letter-spacing: 1.2px;text-align: center; overflow-wrap: break-word;">
+					0x80837667e412746fb654e5c952528259467366aa</div>
+				<h2
+					style="display: inline;padding-left: 15px;padding-right: 15px; border-bottom: 1px solid orange;border-radius: 15px;">
+					Private Key</h2> <br>
+
+				<input type="password" autocomplete="false" name="" id="myPrivateKey"
+					style="border:none; font-size: 16px;width:90%; height:60px; background-color: #2b3e50;color:white; letter-spacing: 1px; overflow-wrap: break-word; margin-top: 5px; text-align: center; margin-right: 0px;"
+					value="283f381929ce8bfa361b2f0fd4072e87fb44ea7944752902970f5410a4a52dbb" disabled>
+
+				<button id="eye" class="designButton" style="width:35px; height:30px; margin-left:"
+					onclick="eyeOnPk()"><img src="eye.png" style="width: 25px;height: 25px;margin-left:-4px;"></button>
+			</div>
+
+			<div id="txInfo" style="display: inline-table; width: 670px;float: right;">
+
+				<h1
+					style="text-align: center; font-weight: bolder; font-size: 35px; border-bottom: 1px solid orange;border-radius: 15px; ">
+					Send Ether</h1><br><br>
+
+				<h2
+					style="display: inline;padding-left: 15px;padding-right: 15px; border-bottom: 1px solid orange;border-radius: 15px; margin-left: 20px;">
+					Receiver's Address</h2><br><br>
+				<input type="text" autocomplete="false" id="toAddress" placeholder="Enter Receiver's Key"
+					style="width: 590px;height: 40px;margin-left: 20px;display: inline-table;font-weight: bolder;letter-spacing: 1px; margin-bottom: 20px;">
+
+				<select id="toggle" class="designButton"
+					style="width: 120px; height: 47px; margin-left: -80px; font-size: 17px;">
+
+					<option value="ether">Ether</option>
+
+				</select><br>
+
+				<h2
+					style="display: inline;padding-left: 15px;padding-right: 15px; border-bottom: 1px solid orange;border-radius: 15px; margin-left: 20px;">
+					Amount</h2>
+				<h2
+					style="display: inline; padding-left: 15px;padding-right: 15px; border-bottom: 1px solid orange;border-radius: 15px; margin-left: 138px;">
+					Transaction Cost</h2><br><br>
+				<input type="number" autocomplete="false" name="sendAmount" id="sendAmount" class="form-control"
+					autocomplete="false"
+					style="width: 145px;height: 30px;font-weight: bolder;letter-spacing: 1px; margin-left: 20px;padding-right: 5px; text-align: center;"
+					placeholder="0.00">
+				<input type="text" name="transactionCost" id="transactionCost" class="form-control" autocomplete="false"
+					style="width: 145px;height: 30px;font-weight: bolder; letter-spacing: 1px;display: inline-block;margin-left: 110px; border-radius: 0px;"
+					disabled>
+				<button class="designButton"
+					style="font-size: 25px;width:250px; height:50px;margin-top: 30px; margin-left: 100px;"
+					onclick="transaction()">Make Transaction</button>
+				<button id="trackDiv" class="designButtonGreen"
+					style="display: none;margin-left: 15px; width: 270px; height: 40px;">
+					<a id="ransactionTrack" href="" style=" font-size: 20px;" target="_blank">Track Your Transaction</a>
+				</button>
+
+			</div><br><br>
+			<hr>
+			<center>
+				<div id="tokenInfo" style="margin-top: 50px; text-align: center; width: 600px; height: auto;">
+					<h1
+						style="font-weight: bolder; font-size: 35px; border-bottom: 1px solid orange;border-radius: 15px; ">
+						Token List</h1><br>
+					<div style="font-size: 35px; font-weight:bolder; ">
+						<div
+							style="display: inline-table;border-bottom: 1px solid orange;border-radius:15px; padding-left: 15px; padding-right: 15px; float: left; ">
+							Name
+						</div>
+						<div
+							style="display: inline-table; border-bottom: 1px solid orange;border-radius:15px; padding-left: 15px; padding-right: 15px;float: right;">
+							Amount</div><br>
+						<div id="list" style="margin-top: 10px; font-size: 25px; font-weight:bolder; ">
+							<div id="tokenList" class="tokenList">
+							</div>
+						</div>
+					</div>
+				</div>
+			</center>
+		</div>
+	</div>
+	<footer id="footer">
+		<h2 id="title" style="text-align: center;font-size:25px;">Block
+			<span id="title1">360</span> Represents</h2>
+	</footer>
+	</div>
+
+	<div id="containerContract"
+		style="display:none; position: absolute; top: 170px; left:450px; background:#2b3e55; padding: 20px; padding-right: 0px; border:2px solid orange; ">
+
+		<div id="close" class="designButton"
+			style="position: relative;top: -36px; right: -20px;  float: right; background: black;color: white; width: 33px; height: 33px; border-radius: 30px; font-size: 20px; padding-top: 3px;"
+			onclick="closePopUp()">X</div>
+		<div id="contractInfo" style="display: inline-table; width: 690px;">
+			<h1 id="heading"
+				style="text-align: center; font-weight: bolder; font-size: 35px; border-bottom: 1px solid orange;border-radius: 15px; ">
+				Add Token</h1><br>
+			<h2
+				style="display: inline;padding-left: 15px;padding-right: 15px; border-bottom: 1px solid orange;border-radius: 15px; margin-left: 20px;">
+				Token Address</h2><br><br>
+			<input type="text" autocomplete="false" id="contractAddress" autocomplete="false" autofocus="true"
+				maxlength="42" placeholder="Token Contract Address"
+				style="width: 600px;height: 40px;margin-left: 20px;font-weight: bolder;letter-spacing: 1px; margin-bottom: 20px;"
+				onblur="contractAdd()">
+
+			<h2
+				style="display: inline;padding-left: 15px;padding-right: 15px; border-bottom: 1px solid orange;border-radius: 15px; margin-left: 20px;">
+				Token Symbol</h2>
+			<h2
+				style="display: inline; padding-left: 15px;padding-right: 15px; border-bottom: 1px solid orange;border-radius: 15px; margin-left: 113px;">
+				Decimal</h2><br><br>
+
+			<input type="text" id="tokenSymbol" autocomplete="false"
+				style="width: 125px;height: 35px;font-weight: bolder; text-align: center; letter-spacing: 1px;display: inline-block; margin-left: 30px;border: none; border-radius: 2px;"
+				disabled>
+			<input type="text" id="tokenDecimal" autocomplete="false"
+				style="width: 100px;height: 35px;font-weight: bolder; text-align: center; letter-spacing: 1px;display: inline-block;margin-left: 118px; border: none; border-radius: 2px;"
+				disabled><br>
+			<button class="designButton"
+				style="font-size: 25px;width:150px; height:50px;margin-top: 20px; margin-left: 150px;"
+				onclick="appendToken()">Add</button><br>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="Wallet360_lib.js"></script>
+	<script type="text/javascript" src="Wallet360.js"></script>
+</body>
+
+</html>

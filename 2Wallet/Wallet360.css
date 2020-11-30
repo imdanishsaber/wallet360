@@ -1,0 +1,394 @@
+/* 0xb2bA5c626E7d6e0B7b52c949E215bAE55439BbbA
+*/
+
+body {
+	color: white;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: auto;
+	min-height: 100%;
+	background-color: #2b3e50;
+	font-family: Arial, Helvetica, sans-serif;
+	/*font-family: "Times New Roman", Times, serif;*/
+}
+
+#securityAlert {
+	width: auto;
+	height: 50px;
+	color: black;
+	font-weight: bolder;
+	font-size: 20px;
+	background-color: #FFA500;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 2;
+}
+
+#header_div {
+	width: auto;
+	height: 80px;
+	background-color: #4e5d6c;
+	position: fixed;
+	top: 50px;
+	left: 0px;
+	right: 0px;
+	z-index: 1;
+}
+
+#header {
+	background-color: #4e5d6c;
+	margin-left: 10%;
+}
+
+#footer {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	height: 40px;
+	/* Height of the footer */
+	background: #4e5d6c;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+a:hover {
+	color: white;
+	text-decoration: none;
+}
+
+#logo {
+	text-decoration: none;
+	text-decoration-color: none;
+	cursor: pointer;
+	margin-bottom: 2px;
+}
+
+#logo-img {
+	width: 65px;
+	height: 65px;
+	cursor: pointer;
+	margin-bottom: 4px;
+}
+
+#logo-img:hover {
+	width: 69px;
+	height: 66px;
+	cursor: pointer;
+}
+
+#title {
+	position: relative;
+	top: -15px;
+	text-decoration: none;
+	text-decoration-color: none;
+	font-weight: bold;
+	font-size: 38px;
+	letter-spacing: -1px;
+	cursor: pointer;
+}
+
+#title:hover {
+	font-weight: 1000;
+}
+
+#title1 {
+	position: relative;
+	left: 2px;
+	text-decoration: none;
+	text-decoration-color: none;
+	cursor: pointer;
+	color: orange;
+}
+
+#tabs {
+	padding-bottom: 27px;
+	padding-top: 27px;
+	width: 130px;
+	height: 80px;
+	float: left;
+	font-size: 18px;
+	text-align: center;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+
+#tabs:hover {
+	font-weight: bolder;
+	background-color: #485563;
+}
+
+#tabs:active {
+	background-color: #485563;
+}
+
+.slider {
+	-webkit-appearance: none;
+	width: 150px;
+	height: 3px;
+	background: white;
+	outline: none;
+	opacity: 0.8;
+	-webkit-transition: .2s;
+	transition: opacity .2s;
+}
+
+.slider:hover {
+	opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 8px;
+	height: 20px;
+	background: orange;
+	cursor: pointer;
+}
+
+#mySelect {
+	float: right;
+	margin-right: 40px;
+	margin-top: 20px;
+	transition: ease-out 0.3s;
+	width: 200px;
+	height: 40px;
+	font-size: 20px;
+}
+
+#heading {
+	font-size: 30px;
+	font-weight: 500;
+}
+
+input[type=text] {
+	padding-left: 10px;
+	border-radius: 10px;
+	font-size: 18px;
+}
+
+input[type=text]:hover {}
+
+input[type=text]:focus {
+	outline: none;
+	border: 2px solid #FFA500;
+}
+
+::placeholder {
+	color: #484848;
+	opacity: 1;
+}
+
+input[type=number] {
+	padding-left: 10px;
+	border-radius: 10px;
+	font-size: 18px;
+}
+
+input[type=number]:hover {}
+
+input[type=number]:focus {
+	outline: none;
+	border: 2px solid #FFA500;
+}
+
+::placeholder {
+	color: #484848;
+	opacity: 1;
+}
+
+input[type=password] {
+	padding-left: 10px;
+	border-radius: 10px;
+	font-size: 18px;
+}
+
+input[type=password]:hover {}
+
+input[type=password]:focus {
+	outline: none;
+	border: 2px solid #FFA500;
+}
+
+::placeholder {
+	color: #484848;
+	opacity: 1;
+}
+
+#submit {
+	-webkit-border-radius: 60;
+	-moz-border-radius: 60;
+	border-radius: 10px;
+	text-shadow: 0px 0px 0px #666666;
+	color: #ffffff;
+	font-size: 15px;
+	background: #2b3e50;
+	padding-left: ;
+	border: solid #FFA500 2px;
+	text-decoration: none;
+	text-align-last: center;
+	outline: none;
+	width: 197px;
+	height: 39px;
+	margin-top: 20px;
+}
+
+#submit:hover {
+	background: #2b3e50;
+	font-weight: bolder;
+}
+
+.designButton {
+	text-shadow: 0px 0px 0px #666666;
+	color: #ffffff;
+	border: solid #FFA500 1.2px;
+	text-decoration: none;
+	text-align-last: center;
+	outline: none;
+	background: #2b3e55;
+	border-radius: 10px;
+	box-sizing: border-box;
+	font-weight: bolder;
+	transition: ease-out 0.3s;
+	outline: none;
+	cursor: pointer;
+}
+
+.designButton:hover {
+	background: #2b3e55;
+	font-weight: bolder;
+	outline: none;
+	background: #2b3e50;
+	box-shadow: 0 0 0.7pt 0.7pt #FFA500;
+	cursor: pointer;
+	outline: none;
+}
+
+.designButton:focus {
+	outline: none;
+}
+
+.designButton:active {
+	border: solid black 2px;
+	box-shadow: 0 0 0.7pt 0.7pt black;
+}
+
+.designButtonGreen {
+	text-shadow: 0px 0px 0px #666666;
+	color: #ffffff;
+	border: solid #44d43b 1.2px;
+	text-decoration: none;
+	text-align-last: center;
+	outline: none;
+	background: #2b3e55;
+	border-radius: 10px;
+	box-sizing: border-box;
+	font-weight: bolder;
+	transition: ease-out 0.3s;
+	outline: none;
+	cursor: pointer;
+}
+
+.designButtonGreen:hover {
+	background: #2b3e55;
+	outline: none;
+	background: #2b3e50;
+	box-shadow: 0 0 0.7pt 0.7pt green;
+	cursor: pointer;
+	outline: none;
+}
+
+.designButtonGreen:focus {
+	outline: none;
+}
+
+.designButtonGreen:active {
+	border: solid black 2px;
+	box-shadow: 0 0 0.7pt 0.7pt black;
+}
+
+.walletButton {
+	color: white;
+	width: 300px;
+	height: 200px;
+	border: 4px solid #FFA500;
+	border-radius: 10px;
+	box-sizing: border-box;
+	font-size: 40px;
+	font-weight: bolder;
+	padding-top: 7%;
+	display: inline-table;
+	margin: 70px;
+	outline: none;
+	transition: ease-out 0.3s;
+}
+
+.walletButton:hover {
+	background: #2b3e55;
+	font-weight: bolder;
+	box-shadow: 0 0 5pt 2pt #FFA500;
+	text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white;
+}
+
+.walletButton:focus {
+	outline: none;
+}
+
+.walletButton:active {
+	border: solid black 2px;
+	box-shadow: 0 0 2pt 2pt black;
+}
+
+input[type="file"] {
+	display: none;
+}
+
+input::-webkit-input-placeholder {
+	color: #989898 !important;
+}
+
+.heading {
+	padding-bottom: 5px;
+}
+
+.wrapper {
+	filter: blur(2px);
+}
+
+.Asymbol {
+	text-align: center;
+	width: 130px;
+	height: 30px;
+	padding-left: 10px;
+	display: inline-table;
+	float: left;
+}
+
+.Aamount {
+	text-align: center;
+	width: 147px;
+	height: 30px;
+	display: inline-table;
+	margin-left: 290px;
+}
+
+.tokenList {
+	border-bottom: 1px solid orange;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	margin-bottom: 20px;
+	border-radius: 15px;
+}
+
+#ransactionTrack:hover {
+	font-size: 22px;
+}
+
+option:hover {
+	background-color: black;
+}

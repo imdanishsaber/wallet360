@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title>Mallet360</title>
+	<link rel="icon" 		type="image/png" href="/home/danish/wallet/images/logo.png" sizes="100x100">
+	<link rel="stylesheet"  type="text/css"  href="/home/danish/wallet/bootstrap/bootstrap.css">
+	<script type="text/javascript" src="/home/danish/wallet/web3/web3.min.js"></script> 	
+    <script type="text/javascript" src="/home/danish/wallet/keythereum/keythereum.js"></script>
+	<script type="text/javascript" src="/home/danish/wallet/ethereumjs-tx/ethereumjs-tx-1.3.3.js"  ></script>
+</head>
+<body id="body">
+<style type="text/css">
+body{
+	width: auto;
+	background-color: #2b3e50;
+}
+a{
+	color: white;
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration: none;
+	text-decoration-color: none;
+	cursor: pointer;
+	color: red;
+	font-weight:;
+	
+	letter-spacing:2px;
+}
+
+a:active{
+	background-color: #2b3e50;
+}
+
+#logo{
+	text-decoration: none;
+	text-decoration-color: none;
+	background-color: #4e5d6c;
+	cursor: pointer;
+}
+#title{
+	text-decoration: none;
+	text-decoration-color: none;
+	background-color: #4e5d6c;
+	cursor: pointer;
+	color:orange;position: relative;left: 3px; top:1px
+
+}
+
+#title1{
+	text-decoration: none;
+	text-decoration-color: none;
+	background-color: #4e5d6c;
+	cursor: pointer;
+	color:orange;position: relative;left: 3px; top:1px
+}
+#tabs{
+}
+#heading{
+	font-size: 30px;
+	font-weight: 500;
+}
+#json:hover{
+	background-color: #df691a;
+}
+#json_download_a:hover{
+	background-color: #4CAF50;
+}
+input[type=password]:focus{
+  outline: none;
+  color: black;
+}
+input[type=text]:focus{
+  outline: none;
+  color: red;
+}
+::placeholder {
+    color: #484848;
+    opacity: 1; 
+}
+input:focus::-webkit-input-placeholder { color: #A8A8A8; }
+#mySelect {
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  text-shadow: 0px 0px 0px #666666;
+  color: #ffffff;
+  font-size: 15px;
+  background: #2b3e50;
+  padding-left:;
+  border: solid #FFA500 2px;
+  text-decoration: none;
+      text-align-last:center;  
+    line-height: 65px;
+outline: none;
+}
+
+#mySelect:hover {
+  background: #2b3e50;
+  font-weight: bolder;
+
+}
+
+</style>
+<div id="header_div" style="width:auto; height:80px; background-color:#4e5d6c;position: fixed;top:0px;left: 0px; right: 0px;z-index: 1; ">
+	<div id="header" style=" width:auto; height:80px; background-color:#4e5d6c; margin-left:272.50px; margin-right:122.50px; padding-right:15px; padding-left:15px; ">
+		<div style="float:left; height: 80px; width: 450px;">
+			<div style="position: relative;top:5px;">
+				<a id="logo" href="Mallet360_generate.html" style="width: 65px; height: 65px;cursor: pointer; display: inline-block;"><img src="/home/danish/wallet/images/logo.png" style="width: 65px; height: 65px;cursor: pointer;"></a>
+				<a id="title" href="Mallet360_access.html" style="position: relative; display: inline; top:-13px; font-family: Lato,sans-serif; font-weight: bold; font-size: 30px; letter-spacing: -1px; color: white;cursor: pointer; ">Mallet<span id="title1" >360</span>&#160 Multi-Sig Wallet
+				</a>
+			</div>
+		</div>
+
+		<div style="float: left; width:auto; height: 80px;">
+			<ul style="width: auto; height: 80px; padding-left:200px;margin:0px; list-style: none; color: rgb(235,235,235);font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size: 15px;color: #ebebeb;">
+				<a id="tabs" href="Mallet360_generate.html" style=" float: left;text-align: center; padding-top: 20px; padding-bottom: 30px; width: 85px; height: 80px; ">Create New Wallet
+				</a>
+				<a id="tabs" href="Mallet360_access.html" style=" float: left;text-align: center; padding-top: 20px; padding-bottom: 30px; width: 80px; height: 80px; ">Access Wallet
+				</a>
+				<a id="tabs" href="#" style=" float: left;text-align: center; padding-top: 30px; padding-bottom: 30px; width: 80px; height: 80px; ">Contact
+				</a>
+			</ul>
+		</div>
+	 		<div  class="answer1wrap">
+	    		<select id="mySelect" style="position: relative;top: 20px;left: 100px; width: 180px; height: 40px;" onchange="GetSelectedItem('mySelect')" ;>
+			    	<option>Network</option>	    			
+			    	<option value="https://rinkeby.infura.io/uhyGfBKKeV2k11JDkoQM">Rinkeby (infura.io)</option>
+			    	<option value="https://rinkeby.infura.io/uhyGfBKKeV2k11JDkoQM">Rinkeby (Etherscan.io)</option>
+			    	<option value="https://rinkeby.infura.io/uhyGfBKKeV2k11JDkoQM">Kovan (Etherscan.io)</option>
+			    	<option value="https://rinkeby.infura.io/uhyGfBKKeV2k11JDkoQM">Ropsten (infura.io)</option>
+			    	<option value="https://rinkeby.infura.io/uhyGfBKKeV2k11JDkoQM">Ropsten (MyEtherWallet)</option>
+			    </select>
+			</div>	
+
+	</div>
+
+</div>
+<div id="main_div" style="position: relative; margin-top: 90px; color: white;" >
+	<div id="container" style="margin-left: 250px;margin-right: 250px;">
+		<div id="wallet_info" style="display: inline-table; border: 1px solid purple; width: 500px; height: 600px; padding: 10px;">
+			<div>
+				<p id="heading">Wallet Information</p>
+				<p id="balance" style="color: red;"></p>
+				<p style="float: left;">Wallet Contract Address &nbsp</p>
+				<span style="float: left; font-size: 10px; margin-top: 6px; color: #788EA5;">(Keep funds here)</span>
+				<div id="my_address" style="width: 480px; height: 80px; background-color: #4e5d6c;position: relative;top: 30px;text-align: center; vertical-align: middle; color:#df691a; font-weight: bold;"></div>
+			</div>
+		</div>
+		<div id="transaction" style="display: inline-table; border: 1px solid purple; width: 500px; height: 600px; padding: 10px;">
+			<div>
+		    <h2 id="h2" >Send Ethereum</h2>
+
+		    <div >
+		      <h4>Receiver's Address</h4>
+		      <input type="text" id="toAddress" class="form-control" placeholder="0x96ed2c0b0b3e4da24ca6e0fb56afa6fd15572f8c">
+		    </div>
+		    <div >
+		      <h4>Amount to Send</h4>
+		      <input type="text" name="sendAmount" id="sendAmount" class="form-control" autocomplete="false" placeholder="Amount in Ether">
+		    </div>
+		    <div >
+		      <h4>Gas Price</h4>
+		      <input type="text" name="gasPrice" id="gasPrice" class="form-control" autocomplete="false" value="21000000000">
+		    </div>        
+		    <div >
+		      <h4>Gas Limit</h4>
+		      <input type="text" name="gasLimit" id="gasLimit" class="form-control" autocomplete="false" value="21000">
+		    </div>
+		    <br>
+		  </div>
+		  <button type="button" class="btn-primary btn-lg u-marginTop13" style="position: relative; top: 10px;" onclick="sendTx()">Make Transaction
+		  </button>
+		</div>
+	</div>
+</div>
+	<script src="Mallet360_info.js" type="text/javascript"></script>
+</body>
+</html>
